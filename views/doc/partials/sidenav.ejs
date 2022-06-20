@@ -1,0 +1,69 @@
+
+
+<div class="container">
+  <a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only">
+    <i class="material-icons">menu</i>
+  </a>
+</div>
+
+<ul id="nav-mobile" class="sidenav sidenav-fixed">
+    <li class="logo"><img src="/img/doc.png" alt=""></li>
+    <li class="version"><span>Documentation</span><br/>version: 1.0.0</li>
+  
+    
+  <li class="no-padding">
+    <ul class="collapsible collapsible-accordion">
+      <% for(let m=0; m < pageData.menu.length; m++) { %>
+        <% if(!pageData.menu[m].submenu){ %>
+          <li class="bold">
+            <a href='<%= pageData.menu[m].link %>' class="waves-effect waves-teal">
+              <%= pageData.menu[m].title %>
+            </a>
+          </li>
+        <% } else { %> 
+          <li class="bold" id='<%= pageData.menu[m].id %>'>
+            <a class="collapsible-header waves-effect waves-teal">
+              <i class="material-icons"><%= pageData.menu[m].icon %></i>
+              <%= pageData.menu[m].title %>
+
+              <% if(pageData.menu[m].id==="referees"){ %>
+                <span class="new"><b>New</b></span>
+              <% } %>
+              <i class="material-icons right" style="margin-right:0;">arrow_drop_down</i>
+               
+            </a>
+            <div class="collapsible-body">
+              <ul>
+                <% for(let s=0; s < pageData.menu[m].submenu.length; s++) { %>
+                  <li>
+                    <a href='<%= pageData.menu[m].submenu[s].link %>'>
+                      <i class="material-icons">chevron_right</i>
+                      <%= pageData.menu[m].submenu[s].title %>
+                    </a>
+                  </li>
+                <% } %>
+                <li><div class="divider"></div></li>
+              </ul>
+            </div>
+          </li>      
+        <% } %>
+      <% } %> 
+    </ul>
+  </li>
+
+</ul>
+
+<script>
+  let category = '<%= pageData.data.category %>'
+
+  if (category) {
+    document.querySelectorAll("a[href='<%= pageData.data.link %>']")[0]
+      .parentElement.classList.add('active')
+    document.getElementById(category).classList.add('active')
+  } else {
+    document.querySelectorAll("a[href='<%= pageData.data.link %>']")[0]
+      .parentElement.classList.add('active')
+  }
+  
+
+</script>

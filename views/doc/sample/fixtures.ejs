@@ -1,0 +1,172 @@
+<%- include('../partials/header'); -%>
+
+
+<main>
+  <div class="container doc">
+    <div class="row">
+      <div class="col s12 m10 offset-m1">
+        <div id="structure1" class="section scrollspy">
+
+          <div class="url-line">
+            <h1 class="title"><%= pageData.data.title %></h1>
+          </div>
+          <div class="divider"></div>
+
+          <article class="message is-primary">
+            <div class="message-body">
+              sample blah blah blah
+            </div>
+          </article>
+
+
+          <h3 class="subtitle is-size-5">What attributes will be returned</h3>
+
+          <div class="today_matches_container">
+
+            <% for(let t=0; t < fixtures.length; t++) { %>
+              <div class="event_header">
+                <div class="icon--flag event__title fl_<%= fixtures[t].num %>">
+                  <div class="event__titleBox">
+                    <span class="event__title--type"><%= fixtures[t].country %> </span>
+                    <span class="event__title--name"><%= fixtures[t].league %> </span>
+                  </div>
+                </div>
+              </div>
+              <ul class="collapsible">
+                    <% for(let tm=0; tm < fixtures[t].matches.length; tm++) { %>
+                      <%  if (tm===0) {%>
+                        <li class="active">
+                      <%} else {  %>
+                        <li>
+                      <%}%>
+                        <div class="collapsible-header">
+
+                          <div class="event">
+                            <div class="time">
+                              <%= fixtures[t].matches[tm].matchData %> 
+                              <%= fixtures[t].matches[tm].matchTime %>
+                            </div>
+                            <div class="home_team">
+                              <img class="logo" src="https://www.flashscore.com/res/image/data/<%= fixtures[t].matches[tm].homeTeamIco %>">
+                              <span><%= fixtures[t].matches[tm].homeTeam %></span>
+                            </div>
+                            <div class="split"> - </div>
+                            <div class="away_team">
+                              <span><%= fixtures[t].matches[tm].awayTeam %></span>
+                              <img class="logo" src="https://www.flashscore.com/res/image/data/<%= fixtures[t].matches[tm].awayTeamIco %>">
+                            </div>
+                            <div class="matchId">
+                              id:&nbsp;<span class="code"><%= fixtures[t].matches[tm].matchId %></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="collapsible-body">
+
+                          <div class="container" >
+                            <div class="section" id='<%= fixtures[t].matches[tm].matchId %>'>
+                              <div class="header center teal-text text-lighten-2"  data-aos="fade-up">Show Match Statistics</div>
+                              
+                              <!--   Icon Section   -->
+                              <div class="row">
+                                <div class="col s3 m2 offset-m2">
+                                  <div class="icon-stats" stats="goals" data-aos="fade-right">
+                                    <img src="/img/icon/goals.png" alt="Goals">
+                                    <span>Goals</span>
+                                  </div>
+                                </div>
+                         
+                                <div class="col s3 m2">
+                                  <div class="icon-stats" stats="shotsOnGoal" data-aos="fade-down">
+                                    <img src="/img/icon/shots.png" alt="Shots">
+                                    <span>Shots</span>
+                                  </div>
+                                </div>
+                          
+                                <div class="col s3 m2">
+                                  <div class="icon-stats" stats="cornerKicks" data-aos="fade-up">
+                                    <img src="/img/icon/corner.png" alt="Corners kicks">
+                                    <span>Corners kicks</span>
+                                  </div>
+                                </div>        
+                          
+                                
+                                <div class="col s3 m2">
+                                  <div class="icon-stats" stats="ballPossession" data-aos="fade-right">
+                                    <img src="/img/icon/possession.png" alt="Ball possession">
+                                    <span>Ball possession</span>
+                                  </div>
+                                </div>
+                              </div>  
+
+                              <div class="row">
+                                <div class="col s4 m2 offset-m1 offset-s2">
+                                  <div class="icon-stats" stats="yellowCards" data-aos="fade-left">
+                                    <img src="/img/icon/yellow.png" alt="Yellow cards">
+                                    <span>Yellow cards</span>
+                                  </div>
+                                </div>
+
+                                <div class="col s4 m2 ">
+                                  <div class="icon-stats" stats="offsides" data-aos="fade-left">
+                                    <img src="/img/icon/offsides.png" alt="Offsides">
+                                    <span>Offsides</span>
+                                  </div>
+                                </div>
+                          
+                                <div class="col s4 m2">
+                                  <div class="icon-stats" stats="penalties" data-aos="fade-down">
+                                    <img src="/img/icon/penalties.png" alt="Penalties">
+                                    <span>Penalties</span>
+                                  </div>
+                                </div>
+                          
+                                <div class="col s4 m2">
+                                  <div class="icon-stats" stats="fouls" data-aos="fade-up">
+                                    <img src="/img/icon/fouls.png" alt="Fouls">
+                                    <span>Fouls</span>
+                                  </div>
+                                </div>        
+                          
+
+                                <div class="col s4 m2">
+                                  <div class="icon-stats" stats="redCards" data-aos="fade-left">
+                                    <img src="/img/icon/red.png" alt="Red cards">
+                                    <span>Red cards</span>
+                                  </div>
+                                </div>
+                              </div>
+                                   
+                            </div>
+                          </div>                          
+                          
+                        </div>
+                        </li>
+                    <% } %>  
+              </ul>
+            <% } %> 
+
+          </div>
+          
+          <%- include('../partials/navigation'); -%>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer'); -%> 
+
+
+<script>
+  // var events = document.getElementsByClassName('event');
+  let events = document.getElementsByClassName('icon-stats');
+    
+  for(var i = 0; i < events.length; i++)
+    events[i].onclick = function() {
+      let parent = this.closest('.section');
+      let stat = this.getAttribute('stats')
+      location.assign(`/api/v1/doc/matchStats?id=${parent.id}&stats=${stat}`)
+    };
+  
+</script>

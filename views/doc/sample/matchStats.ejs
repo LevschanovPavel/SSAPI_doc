@@ -1,0 +1,370 @@
+<%- include('../partials/header'); -%>
+
+
+  <main>
+    <div class="container doc">
+      <div class="row">
+        <div class="col s12 m10 offset-m1">
+          <div id="structure1" class="section scrollspy">
+
+            <div class="url-line">
+              <h1 class="title">
+                <%= pageData.data.title %>
+              </h1>
+            </div>
+            <div class="divider"></div>
+
+            <article class="message is-primary">
+              <div class="message-body">
+                sample blah blah blah
+              </div>
+            </article>
+
+            <%= data.matchInfo.homeTeam %> 
+            <h3 class="subtitle is-size-5">What attributes will be returned</h3>
+
+            <img src='<%= data.matchInfo.matchLogo %>' alt="">
+
+                <div class="matchInfo">
+                  <div class="startTime">
+                    <!-- <%= data.matchInfo.matchData %>  -->
+                    <%= data.matchInfo.matchTime %>
+                  </div>
+                  <div class="home">
+                    <img src='https://www.flashscore.com/res/image/data/<%= data.matchInfo.homeTeamIco %>' alt="">
+                    <br/><%= data.matchInfo.homeTeam %>
+                  </div>
+                  <div class="score"> - </div>
+                  <div class="away">
+                    <img src='https://www.flashscore.com/res/image/data/<%= data.matchInfo.awayTeamIco %>' alt="">
+                    <br/><%= data.matchInfo.awayTeam %>                   
+                  </div>
+                </div>
+
+                
+                <div class="statsTitle">
+                  <%= stats %> Statistics
+                  <div id="total-range">
+                    Total
+                    <div id="slider-range"></div>
+                    <div id="slider-range-value"></div>
+                  </div>
+
+
+                  <ul class="tabs">
+                    <li class="tab col s4"><a href="#home-tab"><%= data.matchInfo.homeTeam %></a></li>
+                    <li class="tab col s4"><a href="#away-tab"><%= data.matchInfo.awayTeam %> </a></li>
+                    <li class="tab col s4"><a href="#h2h-tab">Head-to-Head</a></li>
+                  </ul>
+                  
+                </div>
+
+                  <div class="table-container statsHome" id="home-tab">
+                    <table class="table is-fullwidth is-striped is-narrow is-bordered">
+                      <tbody>
+                        <tr class="stats_head">
+                          <td rowspan="2">Event</td>
+                          <td colspan="5">Match</td>
+                          <td colspan="3">1stHalf</td>
+                          <td colspan="3">2stHalf</td>
+                        </tr>
+
+                        <tr class="stats_head">
+                          <td>
+                            <a class='stats_dropdown-trigger' 
+                               data-target='total_dropdown-match'>Total</a>
+                          </td>
+                          <td>1Half</td>
+                          <td>2Half</td>
+                          
+                          <td class="stats_main" title='<%= data.matchInfo.homeTeam %>'>
+                            <div>
+                              <a class='stats_dropdown-trigger' 
+                                 data-target='total_dropdown-match--select'><%= data.matchInfo.homeTeam %></a>
+                            </div>
+                          </td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>
+                          <td>
+                            <a class='stats_dropdown-trigger' 
+                               data-target='total_dropdown-1stHalf'>Total</a>
+                          </td>
+                          <td class="stats_main" title='<%= data.matchInfo.homeTeam %>'>
+                            <div>
+                              <a class='stats_dropdown-trigger' 
+                                 data-target='total_dropdown-1stHalf--select'><%= data.matchInfo.homeTeam %></a>
+                          </div>
+                          </td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>                
+                          <td>
+                            <a class='stats_dropdown-trigger' 
+                               data-target='total_dropdown-2ndHalf'>Total</a>
+                          </td>
+
+                          <td class="stats_main" title='<%= data.matchInfo.homeTeam %>'>
+                            
+                            <div>
+                              <a class='stats_dropdown-trigger' 
+                                 data-target='total_dropdown-2ndHalf--select'><%= data.matchInfo.homeTeam %></a>
+                          </div>
+                          
+                          </td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>                     
+                        </tr>
+
+                        <% for(let m=0; m < data.matchStats[0].matches.length; m++) { %>
+                          <% let info = data.matchStats[0].matches[m].matchInfo %>
+                          <% let statistic = data.matchStats[0].matches[m][stats] %>
+                          
+                          <tr>
+                            <td class="stats_event tooltipped" data-position="top" data-tooltip='<%=info.tooltip %> '>
+                              <div>
+                                <span><%=info.fullDate %></span>
+                                <img src='https://www.flashscore.com<%= flag_url[info.flag] %>' alt="">
+                                <span><%=info.status %></span>
+                              </div>
+                            </td>
+                            
+                            <td class="total_match" stats="compare"><%=parseInt(statistic.match.homeTeam) 
+                              + parseInt(statistic.match.awayTeam) %></td>
+                            <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                              + parseInt(statistic.firstHalf.awayTeam) %></td>
+                            <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                              + parseInt(statistic.secondHalf.awayTeam) %></td>  
+                              
+                              <td class="stats_main total_match--select" stats="compare"><%= parseInt(statistic.match.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.match.opponent) %></td>
+                            
+                              <td class="total_1stHalf" stats="compare"><%=parseInt(statistic.firstHalf.homeTeam) 
+                                + parseInt(statistic.firstHalf.awayTeam) %></td>
+
+                              
+                              <td class="stats_main total_1stHalf--select" stats="compare"><%= parseInt(statistic.firstHalf.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.firstHalf.opponent) %></td>                              
+                              
+                              <td class="total_2ndHalf" stats="compare"><%=parseInt(statistic.secondHalf.homeTeam) 
+                                + parseInt(statistic.secondHalf.awayTeam) %></td>
+            
+                              
+                              <td class="stats_main total_2ndHalf--select" stats="compare"><%= parseInt(statistic.secondHalf.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.secondHalf.opponent) %></td>                             
+                          </tr>
+                        <% } %>  
+
+                      </tbody>
+                    </table>
+
+                    <%- include('partials/stats_dropdown'); -%>                    
+
+                  </div> 
+
+                  <div class="table-container statsAway" id="away-tab">
+                    <table class="table is-fullwidth is-striped is-narrow is-bordered">
+                      <tbody>
+                        <tr class="stats_head">
+                          <td rowspan="2">Event</td>
+                          <td colspan="5">Match</td>
+                          <td colspan="3">1stHalf</td>
+                          <td colspan="3">2stHalf</td>
+                        </tr>
+                        <tr class="stats_head">
+                          <td>Total</td>
+                          <td>1Half</td>
+                          <td>2Half</td>
+                          <td class="stats_main" title='<%= data.matchInfo.awayTeam %>'><div><%= data.matchInfo.awayTeam %></div></td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>
+
+                          <td>Total</td>
+                          <td class="stats_main" title='<%= data.matchInfo.awayTeam %>'><div><%= data.matchInfo.awayTeam %></div></td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>                
+                          <td>Total</td>
+                          <td class="stats_main" title='<%= data.matchInfo.awayTeam %>'><div><%= data.matchInfo.awayTeam %></div></td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>                     
+                        </tr>
+
+                        <% for(let m=0; m < data.matchStats[1].matches.length; m++) { %>
+                          <% let info = data.matchStats[1].matches[m].matchInfo %>
+                          <% let statistic = data.matchStats[1].matches[m][stats] %>
+                          
+                          <tr>
+                            <td class="stats_event tooltipped" data-position="top" data-tooltip='<%=info.tooltip %> '>
+                              <div>
+                                <span><%=info.fullDate %></span>
+                                <img src='https://www.flashscore.com<%= flag_url[info.flag] %>' alt="">
+                                <span><%=info.status %></span>
+                              </div>
+                            </td>
+                            
+                            <td><%=parseInt(statistic.match.homeTeam) 
+                              + parseInt(statistic.match.awayTeam) %></td>
+                            <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                              + parseInt(statistic.firstHalf.awayTeam) %></td>
+                            <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                              + parseInt(statistic.secondHalf.awayTeam) %></td>  
+                              
+                              <td class="stats_main"><%= parseInt(statistic.match.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.match.opponent) %></td>
+                            
+                              <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                                + parseInt(statistic.firstHalf.awayTeam) %></td>
+                              
+                              <td class="stats_main"><%= parseInt(statistic.firstHalf.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.firstHalf.opponent) %></td>                              
+                              
+                              <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                                + parseInt(statistic.secondHalf.awayTeam) %></td>
+                              
+                              <td class="stats_main"><%= parseInt(statistic.secondHalf.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.secondHalf.opponent) %></td>      
+
+                          </tr>
+                        <% } %>  
+
+                      </tbody>
+                    </table>
+                  </div>                   
+                  
+
+                  <div class="table-container statsH2H" id="h2h-tab">
+                    <table class="table is-fullwidth is-striped is-narrow is-bordered">
+                      <tbody>
+                        <tr class="stats_head">
+                          <td rowspan="2">Event</td>
+                          <td colspan="4">Match</td>
+                          <td colspan="3">1stHalf</td>
+                          <td colspan="3">2stHalf</td>
+                        </tr>
+                        <tr class="stats_head">
+                          <td>Total</td>
+                          <td>HT</td>
+                          <td>AT</td>
+                          <td>MU</td>
+                          <td>Total</td>
+                          <td>HT</td>
+                          <td>AT</td>
+                          <td>Total</td>
+                          <td>HT</td>
+                          <td>AT</td>
+                        </tr>
+
+                        <% for(let m=0; m < data.matchStats[2].matches.length; m++) { %>
+                          <% let info = data.matchStats[2].matches[m].matchInfo %>
+                          <% let statistic = data.matchStats[2].matches[m][stats] %>
+                          
+                          <tr>
+                            <td class="stats_event tooltipped" data-position="top" data-tooltip='<%=info.tooltip %> '>
+                              <div>
+                                <span><%=info.fullDate %></span>
+                                <img src='https://www.flashscore.com<%= flag_url[info.flag] %>' alt="">
+                                <span><%=info.status %></span>
+                              </div>
+                            </td>
+                            
+                            <td><%=parseInt(statistic.match.homeTeam) 
+                              + parseInt(statistic.match.awayTeam) %></td>
+                            <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                              + parseInt(statistic.firstHalf.awayTeam) %></td>
+                            <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                              + parseInt(statistic.secondHalf.awayTeam) %></td>  
+                              <td><%= parseInt(statistic.secondHalf.homeTeam) 
+                                + parseInt(statistic.secondHalf.awayTeam)  %></td> 
+                              <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                                + parseInt(statistic.firstHalf.awayTeam) %></td>
+                              <td><%=parseInt(statistic.firstHalf.homeTeam) %></td>
+                              <td><%=parseInt(statistic.firstHalf.awayTeam) %></td>                   
+                              
+                              <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                                + parseInt(statistic.secondHalf.awayTeam) %></td>
+                              <td><%=parseInt(statistic.secondHalf.homeTeam) %></td>
+                              <td><%=parseInt(statistic.secondHalf.awayTeam) %></td>                                            
+                          </tr>
+                        <% } %>  
+
+                      </tbody>
+                    </table>
+                  </div>                    
+
+              </div>                
+                          
+
+            <%- include('../partials/navigation'); -%>
+
+          </div>
+
+          <!-- <div>
+            <canvas id="myChart"></canvas>
+          </div> -->
+                     
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('../partials/footer'); -%>
+
+
+<script>
+  var inc = document.getElementsByClassName("stepper");
+console.log("inc",inc)
+
+for (i = 0; i < inc.length; i++) {
+  var incI = inc[i].querySelector("input"),
+    id = incI.getAttribute("id"),
+    min = incI.getAttribute("min"),
+    max = incI.getAttribute("max"),
+    step = incI.getAttribute("step");
+  document
+    .getElementById(id)
+    .previousElementSibling.setAttribute(
+      "onclick",
+      "stepperInput('" + id + "', -" + step + ", " + min + ")"
+    ); 
+  document
+    .getElementById(id)
+    .nextElementSibling.setAttribute(
+      "onclick",
+      "stepperInput('" + id + "', " + step + ", " + max + ")"
+    ); 
+}
+
+function stepperInput(id, s, m) {
+  var el = document.getElementById(id);
+  if (s > 0) {
+    if (parseFloat(el.value) < m) {
+      el.value = parseFloat(el.value) + s;
+    }
+  } else {
+    if (parseFloat(el.value) > m) {
+      el.value = parseFloat(el.value) + s;
+    }
+  }
+}
+</script>
+
+<script>
+
+  let stats_buttons = document.getElementsByClassName('stats_dropdown--btn');
+    
+    for (var i = 0; i < stats_buttons.length; i++)
+      stats_buttons[i].onclick = function() {
+        let compare_value = $(this).closest('.stats_dropdown').find("input").val()
+        let col_id = $(this).closest('.dropdown-content')[0].id
+        console.log("col_id",col_id)
+        ApplyFilter(parseFloat(compare_value), col_id);
+    };
+
+function ApplyFilter(num,id) {
+  $('td[stats="compare"]').each(function(i,el){
+    $(el).css({color: "#363636", background: "none"});
+  });
+
+
+    let str = id.replace("dropdown-", "");
+    console.log("str",str)
+    let total_match = $(`.${str}`).map(function() {
+      if (parseInt(this.innerHTML) > num) {$(this).css({color: "blue", background: "#e5e5e5"})}
+      if (parseInt(this.innerHTML) < num) {$(this).css({color: "red", background: "#e5e5e5"})}
+      if (parseInt(this.innerHTML) === num) {$(this).css({color: "green", background: "#e5e5e5"})}
+    return this.innerHTML;
+  }).get();
+}
+</script>

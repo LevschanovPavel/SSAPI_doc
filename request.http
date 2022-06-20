@@ -1,0 +1,22 @@
+
+
+### login
+POST http://localhost:4001/login
+Content-Type: application/json
+
+{ "email" : "admin@gmail.com", "password" : "qwerty" }
+
+### signup
+POST http://localhost:4001/signup
+Content-Type: application/json
+
+{ "name" : "test",  "email" : "tkkry@gmail.com",  "password" : "q1w2e3" }
+
+
+###
+GET http://localhost:4001/api/v1/todayMatches/europe/ClDjv3V5
+Content-Type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGNmNmU0NzM5NDMyMTczMDdlYTc2OSIsImlhdCI6MTY0NTEwNzY3NCwiZXhwIjoxNjQ3Njk5Njc0fQ.WQ6I_6LBly8IrFT5NuAGU0Bln0jRJQpr-Fw0vLiFk9Q
+
+###
+GET http://localhost:4001/api/v1/todayMatches/demo

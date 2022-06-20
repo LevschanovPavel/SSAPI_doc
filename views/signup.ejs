@@ -1,0 +1,98 @@
+<%- include('partials/header'); -%>
+
+<div id="index-banner" class="parallax-container valign-wrapper">
+  <div class="section no-pad-bot">
+    <div class="container valign">
+      <br><br>
+      <h1 class="header center teal-text ">Register</h1>
+      <div class="row center">
+        <h5 class="header col s12 light grey-text text-darken-3">Register and get an API key</h5>
+      </div>
+      <div class="row center">
+        <a href="#startPosts" class="btn-floating btn-large waves-effect waves-light grey darken-3 head-link"><span class="material-icons auth-icon">keyboard_double_arrow_down</span></a>
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <div class="parallax"><img src="img/background6.jpg" alt="Unsplashed background img 2"></div>
+</div>
+ 
+<div class="container" id="startPosts">
+  <br>
+  <br>
+  <div class="row">
+    <div class="col s12 m10 offset-m1 l9 offset-l1">
+      <h4 class="center">Sign up</h4>
+
+      <form class="col s12 m12">
+        <div class="row">
+          <div class="error col s12 m12 center"></div>
+          <div class="input-field col s12 m12">
+            <i class="material-icons prefix">person</i>
+            <input id="name" type="text" class="validate">
+            <label for="name">Name</label>
+          </div>
+          
+          <div class="input-field col s12 m12">
+            <i class="material-icons prefix">email</i>
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
+          
+          <div class="input-field col s12 m12">
+            <span class="material-icons prefix">password</span>
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+          <div class="input-field col s12 center">
+            <button type="submit" class="waves-effect waves-light btn">Register</button>
+          </div>
+            
+        </div><!--row-->
+      </form>
+    </div>
+  </div>
+  <br>
+  <br>
+</div>
+
+
+
+
+<%- include('partials/footer'); -%>
+
+<script>
+  const form = document.querySelector('form');
+  // const emailError = document.querySelector('.email.error');
+  // const passwordError = document.querySelector('.password.error');
+  const error = document.querySelector('.error');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    // reset errors
+    error.textContent = '';
+    // get values
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    try {
+      const res = await fetch('/signup', { 
+        method: 'POST', 
+        body: JSON.stringify({ name, email, password }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      console.log(data);
+
+      if (data.error) {
+        error.textContent = data.error;
+      }
+
+      if (data.user) {
+        location.assign('/');
+      }
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+</script>

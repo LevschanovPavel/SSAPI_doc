@@ -1,0 +1,172 @@
+<div class="navbar-fixed">
+<nav class="white" role="navigation">
+    <!-- Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">Pricing</a></li>
+    <li><a href="#!">Documentation</a></li>
+    <li><a href="#!">Sample</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">Contact</a></li>
+  </ul>
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="/" class="brand-logo">
+      <img src="/img/logo.png" alt="">
+    </a>
+ 
+
+    <ul class="right hide-on-small-only">
+      <li>
+        <a class="dropdown-trigger hide-on-med-only" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a>
+      </li>
+      <% if (user) { %>
+        <li class="flow-text teal-text text-darken-4">
+          <% if (user.name==="admin") { %>
+            <a href="/admin" class="nav-user"><i class="material-icons">person</i><%= user.name %></a>
+          <% } else { %>
+            <a href="/me" class="nav-user"><i class="material-icons">person</i><%= user.name %></a>
+          <% } %>
+        </li>
+        <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
+      <% } else { %>
+        <li><a href="/login">Log in</a></li>
+        <li><a href="/signup">Sign up</a></li>
+      <% } %>
+
+    </ul>
+<!-- 
+    <ul id="nav-mobile" class="sidenav">
+      <% if (user) { %>
+        
+        <li>
+          <% if (user.name==="admin") { %>
+            <a href="/admin" class="nav-user"><i class="material-icons">person</i><%= user.name %></a>
+          <% } else { %>
+            <a href="/me" class="nav-user"><i class="material-icons">person</i><%= user.name %></a>
+          <% } %>
+          </li>
+      <% } else { %>
+        <li><a href="/login">Log in</a></li>
+        <li><a href="/signup">Sign up</a></li>
+      <% } %>    
+      <li><a href="/logout">Logout<i class="material-icons">exit_to_app</i></a></li>
+      <li><a href="#!">Pricing</a></li>
+      <li><a href="#!">Documentation</a></li>
+      <li><a href="#!">Sample</a></li>
+      <li class="divider"></li>
+      <li><a href="#!">Contact</a></li>  
+    </ul> -->
+
+
+    <ul class="sidenav white" id="nav-mobile">
+
+      <% if (user) { %>
+        <li class="sidenav-header teal lighten-3">
+          <div class="row">
+            <div class="col s4">
+                <img src="/img/avatar/man.svg" width="48px" height="48px" alt="" class="circle responsive-img valign profile-image">
+            </div>
+            <div class="col s8">
+                <a class="btn-flat center dropdown-trigger waves-effect waves-light white-text" href="#" data-target="profile-dropdown">Admin<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                <ul id="profile-dropdown" class="dropdown-content">
+                  <% if (user.name==="admin") { %>
+                    <li><a href="/admin"><i class="material-icons">person</i>Profile</a></li>
+                  <% } else { %>
+                    <li><a href="/me"><i class="material-icons">person</i>Profile</a></li>
+                  <% } %>
+                    <li><a href="#"><i class="material-icons">settings</i>Setting</a></li>
+                    <li><a href="#"><i class="material-icons">help</i>Help</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/logout"><i class="material-icons">exit_to_app</i>Logout</a></li>
+                </ul>
+            </div>
+          </div>
+        </li>
+      <% } else { %>
+
+        <li class="sidenav-header teal lighten-3">
+          <div class="row">
+            <div class="col s4">
+                <img src="/img/avatar/man-1.svg" width="48px" height="48px" alt="" class="circle responsive-img valign profile-image">
+            </div>
+            <div class="col s4">
+              <a href="/login" class="waves-effect waves-blue  white-text">Log in</a> 
+            </div>
+            <div class="col s4">
+              <a href="/signup" class="waves-effect waves-blue  white-text">Sign&nbsp;up</a>   
+            </div>            
+          </div>
+        </li>
+      <% } %>
+       
+
+      
+      <li class="teal lighten-1">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+              <a class="collapsible-header white-text waves-effect waves-blue "><i class="material-icons white-text ">language</i>Language <i class="material-icons right white-text" style="margin-right:0;">arrow_drop_down</i></a>
+              <div class="collapsible-body z-depth-3">
+                <ul>
+                  <li><a class="waves-effect waves-blue" href="#">English</a></li>
+                  <li><a class="waves-effect waves-blue" href="#">Русский</a></li>
+                  <li><div class="divider"></div></li>
+                </ul>
+              </div>
+            </li>
+        </ul>
+      </li>
+      
+      
+      
+      <li class="white">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect waves-blue"><i class="material-icons">folder_special</i>Layouts <i class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">fullscreen</i>Full Screen<span class="new badge right yellow grey lighten-1" data-badge-caption="updated"></span></a></li>
+                <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">swap_horiz</i>Horizontal Menu<span class="new badge right yellow darken-3"></span></a></li>
+                <li><div class="divider"></div></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li class="white">
+        <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header waves-effect waves-blue">
+              <i class="material-icons">folder_open</i>Documentation
+              <i class="material-icons right" style="margin-right:0;">arrow_drop_down</i>
+            </a>
+            <div class="collapsible-body">
+              <ul>
+                <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">chevron_right</i>Getting started</a></li>
+                <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">chevron_right
+                </i>Api model</a></li>
+                <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">chevron_right
+                </i>Coverage</a></li>
+                <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">chevron_right</i>Today matches</a></li>
+                <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">chevron_right</i>Fixtures</a></li>
+                <li><a class="waves-effect waves-blue" href="#"><i class="material-icons">chevron_right</i>Match statistics</a></li>                
+                <li><div class="divider"></div></li>                                                
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="white"><a href="#json_section" class="sidenav-close waves-effect waves-blue"><i class="material-icons">mail</i>JSON Data</a></li>
+      <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">call</i> Menu item</a></li>
+      <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">android</i> Menu item</a></li>
+      <li class="white"><a href="#stats_section" class="sidenav-close waves-effect waves-blue"><i class="material-icons">dialpad</i> Statistics</a></li>
+      <li class="white"><div class="divider"></div></li>
+      <li class="white"><a href="#" class="waves-effect waves-blue"><i class="material-icons">language</i> Menu item<span class="new badge right yellow darken-3"></span></a></li>
+      
+    </ul>
+    
+    
+    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  </div>
+</nav>
+</div>
+

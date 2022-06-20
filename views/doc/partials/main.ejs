@@ -1,0 +1,287 @@
+<main> 
+  <div class="container doc">
+    <div class="row">
+      <div class="col s12 m10 offset-m1">
+        <div id="structure1" class="section scrollspy">
+
+          <div class="url-line">
+            <h1 class="title"><%= pageData.data.title %></h1>
+
+            <h3 class="url-title">
+              <span class="request is-rounded" style="margin-right: 0.25rem;">get</span>
+              <%= pageData.data.get %>
+            </h3>
+          </div>
+
+          <article class="message is-primary">
+            <div class="message-body">
+              The League endpoints return information such as the name of the League, the Country id which the League
+              belongs (if there is one) and so on.
+              <br>
+              ElenaSport.io gives you access to all the Leagues with any plans you may have subscribed to (free plan
+              included).
+              All the available Leagues are listed in the <a href="/doc/coverage">coverage page</a>.
+              <strong>Please, contact us if you are looking for a </strong>
+            </div>
+          </article>
+
+          <article class="message is-info">
+            <div class="message-body">
+              <p>The endpoint <span class="code">/v2/leagues</span> returns all the Leagues available. You can also
+                pass the
+                <span class="code">name</span> attribute to filter out those Leagues whose name doesn't contain that
+                string.
+              </p>
+              <span>This endpoint is paginated, navigate to the <a href="/doc/pagination">pagination page</a>
+                to learn how to manage the pagination.
+              </span>
+            </div>
+          </article>
+
+          <h3 class="subtitle is-size-5">How to make a request?</h3>
+
+          <div class="row">
+            <div class="url-subtitle col s12 m2">URL:</div>
+            <div class="col s12 m10">
+              <span class="code">https://football.elenasport.io/v2/countries/:id/leagues</span>
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="url-subtitle col s12 m2">Arguments&#58</div>
+            <div class="table-container col s12 m10">
+
+              <table class="param-table table is-bordered is-fullwidth">
+                <tr>
+                  <td class="has-text-right">
+                    <span class="nobreak">Authorization
+                      <span class="has-text-weight-light is-size-7">(header)</span>
+                    </span>
+                    <br>
+                    <span class="has-text-primary has-text-weight-medium is-size-7 is-uppercase">required</span>
+                  </td>
+                  <td class="has-text-grey-light">The access token to authorize the call. <a
+                      href="/doc/getting_started/elena_sport"> Click here for more information.</a></td>
+                </tr>
+                <tr>
+                  <td class="has-text-right"><span class="nobreak">
+                      id
+                      <span class="has-text-weight-light is-size-7">(path)</span></span> <br> <span
+                      class="has-text-primary has-text-weight-medium is-size-7 is-uppercase">required</span></td>
+                  <td class="has-text-grey-light">The id of the Country</td>
+                </tr>
+                <tr>
+                  <td class="has-text-right"><span class="nobreak">
+                      expand
+                      <span class="has-text-weight-light is-size-7">(query)</span></span> <br> <span
+                      class="has-text-grey-light has-text-weight-medium is-size-7 is-uppercase">optional</span></td>
+
+                  <td class="has-text-grey-light">
+                    <p>
+                      The expand values allowed for this endpoint.
+                      <a href="/doc/expand" class="">Click here to learn more on how expanding the responses</a>
+                    </p>
+                    <!-- level 1 -->
+                    <ul class="collapsible expandable">
+                      <li>
+                        <div class="collapsible-header"><span class="code">country</span>
+                          (<i class="material-icons icon-change">add</i>)</div>
+                        <div class="collapsible-body">
+
+                          <!-- level 2 -->
+                          <ul class="collapsible expandable tab">
+                            <li>
+                              <div class="collapsible-header"><span class="code">country</span>
+                                (<i class="material-icons icon-change">add</i>)</div>
+                              <div class="collapsible-body">
+
+                                <!-- level 3 -->
+                                <ul class="tab">
+                                  <li><span class="code">country</span></li>
+                                  <li><span class="code">seasons</span></li>
+                                  <li><span class="code">seasons</span></li>
+                                </ul>
+                                <!-- level 3 -->
+                              </div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><span class="code">seasons</span>
+                                (<i class="material-icons icon-change">add</i>)</div>
+                              <div class="collapsible-body"></div>
+                            </li>
+                            <li>
+                              <div class="collapsible-header"><span class="code">seasons</span>
+                                (<i class="material-icons icon-change">add</i>)</div>
+                              <div class="collapsible-body"></div>
+                            </li>
+                          </ul>
+                          <!-- level 2 -->
+
+
+                        </div>
+                      </li>
+                      <li>
+                        <div class="collapsible-header"><span class="code">seasons</span>
+                          (<i class="material-icons icon-change">add</i>)</div>
+                        <div class="collapsible-body">
+                          <!-- level 3 -->
+                          <ul class="tab">
+                            <li><span class="code">country</span></li>
+                            <li><span class="code">seasons</span></li>
+                            <li><span class="code">seasons</span></li>
+                          </ul>
+                          <!-- level 3 -->
+
+                        </div>
+                      </li>
+                      <li>
+                        <div class="collapsible-header"><span class="code">seasons</span>
+                          (<i class="material-icons icon-change">add</i>)</div>
+                        <div class="collapsible-body">
+                          <!-- level 3 -->
+                          <ul class="tab">
+                            <li><span class="code">country</span></li>
+                            <li><span class="code">seasons</span></li>
+                            <li><span class="code">seasons</span></li>
+                          </ul>
+                          <!-- level 3 -->
+                        </div>
+                      </li>
+                    </ul>
+                    <!-- level 1 -->
+
+
+
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <h3 class="subtitle is-size-5">What attributes will be returned</h3>
+
+          <div class="table-container">
+            <table class="table is-fullwidth is-striped is-narrow is-bordered">
+              <tbody>
+                <tr>
+                  <td>id</td>
+                  <td><span class="code">integer</span></td>
+                  <td class="has-text-grey-light">The unique identifier of the league</td>
+                </tr>
+                <tr>
+                  <td>idCountry</td>
+                  <td><span class="code">integer</span></td>
+                  <td class="has-text-grey-light">The unique identifier of the country which the
+                    league belongs (it can be null)</td>
+                </tr>
+                <tr>
+                  <td>countryName</td>
+                  <td><span class="code">string</span></td>
+                  <td class="has-text-grey-light">The name of the country which the league belongs
+                    (it can be null)</td>
+                </tr>
+                <tr>
+                  <td>name</td>
+                  <td><span class="code">string</span></td>
+                  <td class="has-text-grey-light">The name of the league</td>
+                </tr>
+                <tr>
+                  <td>nationalLeague</td>
+                  <td><span class="code">boolean</span></td>
+                  <td class="has-text-grey-light">A boolean value that tells you if the league is a
+                    national league (such as England - Premier League) or cross countries (such as UEFA - Champions
+                    League)</td>
+                </tr>
+                <tr>
+                  <td>clubsLeague</td>
+                  <td><span class="code">boolean</span></td>
+                  <td class="has-text-grey-light">A boolean value that tells you if the league is
+                    played by football clubs (such as England - Premier League) or national teams (such as FIFA World
+                    Cup)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <%- include('navigation'); -%>
+
+          <ul id="tabs-swipe-demo" class="tabs">
+            <li class="tab col s3"><a href="#test-swipe-1">cURL</a></li>
+            <li class="tab col s3"><a class="active" href="#test-swipe-2">NODE</a></li>
+            <li class="tab col s3"><a href="#test-swipe-3">PYTHON</a></li>
+            <li class="tab col s3"><a href="#test-swipe-4">PHP</a></li>
+            <li class="tab col s3"><a href="#test-swipe-5">JS</a></li>
+            <li class="tab col s3"><a href="#test-swipe-6">RUBY</a></li>
+            
+          </ul>
+          <div class="tabs-body">            
+          <div id="test-swipe-1" class="col s12">
+
+<pre class="line-numbers">
+<code class="language-css">.example {
+  font-family: Georgia, Times, serif;
+  color: #555;
+  text-align: center;
+}</code>
+</pre>            
+          </div>
+          <div id="test-swipe-2" class="col s12">
+<pre class="line-numbers">
+<code class="language-css">.example {
+  font-family: Georgia, Times, serif;
+  color: #555;
+  text-align: center;
+}</code>
+</pre>                 
+          </div>
+          <div id="test-swipe-3" class="col s12">
+<pre class="line-numbers">
+<code class="language-css">.example {
+  font-family: Georgia, Times, serif;
+  color: #555;
+  text-align: center;
+}</code>
+</pre>                 
+          </div>
+<div id="test-swipe-4" class="col s12">
+<pre class="line-numbers">
+<code class="language-css">.example {
+  font-family: Georgia, Times, serif;
+  color: #555;
+  text-align: center;
+}</code>
+</pre>                 
+</div>        
+<div id="test-swipe-5" class="col s12">
+<pre class="line-numbers">
+  <code class="language-css">.example {
+    font-family: Georgia, Times, serif;
+    color: #555;
+    text-align: center;
+  }</code>
+</pre>                 
+</div>   
+<div id="test-swipe-6" class="col s12">
+<pre class="line-numbers">
+  <code class="language-css">.example {
+    font-family: Georgia, Times, serif;
+    color: #555;
+    text-align: center;
+  }</code>
+</pre>                 
+</div>   
+
+        </div>
+
+
+
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+</main>

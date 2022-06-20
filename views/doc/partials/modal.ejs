@@ -1,0 +1,17 @@
+<div class="request-modal" >
+  <div class="request-modal_content" data-aos="fade-up" >
+    <div class="request-modal_header">
+      <span class="url-title">
+        <h6><%= pageData.data.title %></h6>
+        <span class="request is-rounded" style="margin-right: 0.25rem;">200</span>
+        OK - Server returned a 200 response
+      </span>
+      <span class="request-close"><i class="material-icons">close</i></span>
+    </div>
+    <pre class="line-numbers"><code id="some-code" class="language-json5 response-json"  data-prismjs-copy="Copy"></code>
+    </pre>  
+    <div class="request-modal_footer">
+      <span>GET: <%= pageData.data.get %></span>  - it's a demo request (limit records)
+    </div>   
+  </div>
+</div>

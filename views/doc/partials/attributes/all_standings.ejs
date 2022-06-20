@@ -1,0 +1,118 @@
+<div class="table-container">
+  <table class="table is-fullwidth is-striped is-narrow is-bordered">
+    <tbody>
+      <tr>
+        <td><span class="attribute">id</span></td>
+        <td class="has-text-grey-light">The unique identifier of the league</td>
+      </tr>
+      <tr>
+        <td><span class="attribute">country</span></td>
+        <td class="has-text-grey-light">The name of the country which the league belongs</td>
+      </tr>
+      <tr>
+        <td><span class="attribute">league</span></td>
+        <td class="has-text-grey-light">The name of the league</td>
+      </tr>
+      <tr>
+        <td class="has-text-grey-light">
+        
+          <ul class="collapsible expandable">
+            <li>
+              <div class="collapsible-header"><span class="attribute">standings</span>
+                (<i class="material-icons icon-change">add</i>)</div>
+              <div class="collapsible-body">
+                <!-- level 3 -->
+                <ul class="tab">
+                  <li><span class="attribute">overall</span></li>
+                  <li><span class="attribute">home</span></li>
+                  <li><span class="attribute">away</span></li>
+                  <li><span class="attribute">info</span></li>
+                </ul>
+                <!-- level 3 -->
+              </div>
+            </li>
+          </ul>        
+
+        </td>
+        <td class="has-text-grey-light">
+          An object of arrays {[overall], [home], [away]} about rankings of teams that represents next properties: 
+          <table class="table is-fullwidth is-striped is-narrow ">
+            <tbody>
+              <tr>
+                <td><span class="attribute">rank</span></td>
+                <td class="has-text-grey-light">The position in the ranking</td>
+              </tr>
+              <tr>
+                <td><span class="attribute">teamName</span></td>
+                <td class="has-text-grey-light">The name of the team related to the standing</td>
+              </tr>              
+              <tr>
+                <td><span class="attribute">teamId</span></td>
+                <td class="has-text-grey-light">The unique identifier of the team</td>
+              </tr>  
+              <tr>
+                <td><span class="attribute">teamLogo</span></td>
+                <td class="has-text-grey-light">The logo of the team</td>
+              </tr> 
+              <tr>
+                <td><span class="attribute">matchesPlayed</span></td>
+                <td class="has-text-grey-light">The number of games played</td>
+              </tr> 
+              <tr>
+                <td><span class="attribute">wins</span></td>
+                <td class="has-text-grey-light">The number of games won</td>
+              </tr> 
+              <tr>
+                <td><span class="attribute">draws</span></td>
+                <td class="has-text-grey-light">The number of games ended in a draw</td>
+              </tr> 
+              <tr>
+                <td><span class="attribute">losses</span></td>
+                <td class="has-text-grey-light">The number of games lost</td>
+              </tr>
+              <tr>
+                <td><span class="attribute">goals</span></td>
+                <td class="has-text-grey-light">The goal difference</td>
+              </tr> 
+              <tr>
+                <td><span class="attribute">points</span></td>
+                <td class="has-text-grey-light">The number of points</td>
+              </tr> 
+              <tr>
+                <td><span class="attribute">positionTeam</span></td>
+                <td class="has-text-grey-light">The information about teams promotion or relegation</td>
+              </tr>       
+              <tr>
+                <td class="has-text-grey-light">
+                  <ul class="collapsible expandable">
+                    <li>
+                      <div class="collapsible-header"><span class="attribute">nextMatch</span>
+                        (<i class="material-icons icon-change">add</i>)</div>
+                      <div class="collapsible-body">
+                        <!-- level 3 -->
+                        <ul class="tab">
+                          <li><span class="attribute">title</span></li>
+                          <li><span class="attribute">matchDate</span></li>
+                          <li><span class="attribute">matchId</span></li>
+                        </ul>
+                        <!-- level 3 -->
+                      </div>
+                    </li>
+                  </ul>                    
+                </td>
+                <td class="has-text-grey-light">The information about next match.</td>
+              </tr>                    
+              <tr>
+                <td><span class="attribute">info</span></td>
+                <td class="has-text-grey-light">The information about league promotion and relegation</td>
+              </tr>
+               
+                                        
+            </tbody>
+          </table>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

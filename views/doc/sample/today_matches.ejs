@@ -1,0 +1,71 @@
+<%- include('../partials/header'); -%>
+<main>
+  <div class="container doc">
+    <div class="row">
+      <div class="col s12 m10 offset-m1">
+        <div id="structure1" class="section scrollspy">
+
+          <div class="url-line">
+            <h1 class="title"><%= pageData.data.title %></h1>
+          </div>
+          <div class="divider"></div>
+
+          <article class="message is-primary">
+            <div class="message-body">
+              sample blah blah blah
+            </div>
+          </article>
+
+
+          <h3 class="subtitle is-size-5">What attributes will be returned</h3>
+
+          <div class="today_matches_container">
+
+            <% for(let t=0; t < todayMatches.length; t++) { %>
+              <div class="event_header">
+                <div class="icon--flag event__title fl_<%= todayMatches[t].num %>">
+                  <div class="event__titleBox">
+                    <span class="event__title--type"><%= todayMatches[t].country %> </span>
+                    <span class="event__title--name"><%= todayMatches[t].league %> </span>
+                  </div>
+                </div>
+                
+              </div>
+              <% for(let tm=0; tm < todayMatches[t].matches.length; tm++) { %>
+              <div class="event" id='<%= todayMatches[t].matches[tm].matchId %>' >
+                <div class="time"><%= todayMatches[t].matches[tm].matchTime %> id: <%= todayMatches[t].matches[tm].matchId %></div>
+                <div class="home_team">
+                  <img class="logo" src="https://www.flashscore.com/res/image/data/<%= todayMatches[t].matches[tm].homeTeamIco %>">
+                  <span><%= todayMatches[t].matches[tm].homeTeam %></span>
+                </div>
+                <div class="split"> - </div>
+                <div class="away_team">
+                  <span><%= todayMatches[t].matches[tm].awayTeam %></span>
+                  <img class="logo" src="https://www.flashscore.com/res/image/data/<%= todayMatches[t].matches[tm].awayTeamIco %>">
+                  
+                </div>
+              </div>
+              <% } %>  
+              <% } %>   
+          </div>
+          
+          <%- include('../partials/navigation'); -%>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('../partials/footer'); -%> 
+
+
+<script>
+  var events = document.getElementsByClassName('event');
+
+  for(var i = 0; i < events.length; i++)
+    events[i].onclick = function() {
+      location.assign(`/api/v1/doc/matchStats?id=${this.id}&stats=fouls`)
+    };
+  
+</script>

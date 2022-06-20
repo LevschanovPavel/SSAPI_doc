@@ -1,0 +1,29 @@
+<%- include('../partials/header'); -%>
+
+<main> 
+  <div class="container doc">
+    <div class="row">
+      <div class="col s12 m10 offset-m1">
+        <div id="structure1" class="section scrollspy">
+
+          <div class="url-line">
+            <h1 class="title"><%= pageData.data.title %></h1>
+
+            <h3 class="url-title">
+              <span class="request is-rounded" style="margin-right: 0.25rem;">get</span>
+              <%= pageData.data.get %>
+            </h3>
+          </div>
+          
+
+          <%- include('../partials/navigation'); -%>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<%- include('../partials/footer'); -%>

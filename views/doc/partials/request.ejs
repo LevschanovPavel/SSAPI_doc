@@ -1,0 +1,38 @@
+<%- include('./modal'); -%>
+<div id="request">
+  <button class="request-button">Demo Request</button> 
+</div>
+
+
+<script>
+  const button = document.querySelector('.request-button');
+  const modal = document.querySelector('.request-modal');
+  const content = document.querySelector('.request-modal_content');
+  const response = document.querySelector('.response-json');
+  const modal_close = document.querySelector('.request-close');
+  const animations = ['animate__animated', 'animate__fadeIn' ];
+  const demo = '<%- pageData.data.demo %>';
+ 
+  modal.addEventListener('click', () => {modal.classList.remove("active")})
+  modal_close.addEventListener('click', () => {modal.classList.remove("active")})
+  content.addEventListener('click', e => e.stopPropagation())
+    
+  button.addEventListener('click', async (e) => {
+    try {
+      button.innerHTML='Loading ...'
+      console.log(demo);
+      const res = await fetch(`${demo}`,{method: 'GET'});
+      const data = await res.json();
+      console.log(data)
+      response.textContent=JSON.stringify(data,null,2)
+      Prism.highlightElement(response)
+      
+      content.classList.add(...animations);
+      modal.classList.add("active")      
+      button.innerHTML='Demo Request'
+    }
+    catch (err) {
+      console.log(err);
+    }
+  });
+</script>
