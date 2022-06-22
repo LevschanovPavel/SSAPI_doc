@@ -1,0 +1,76 @@
+<%- include('../../partials/header'); -%>
+<main>
+  <div class="container doc">
+    <div class="row">
+      <div class="col s12 m10 offset-m1">
+        <div id="structure1" class="section scrollspy">
+
+          <div class="url-line">
+            <h1 class="title"><%= pageData.data.title %></h1>
+          </div>
+          <div class="divider"></div>
+
+          <p class="has-text-justified">
+            We offer a global coverage, with over 150 football leagues supported. A massive football database that contains livescores, historical results, standings, events, line-ups, players, stats, logos, pics and much more.
+          </p>
+
+          <article class="message is-primary">
+            <div class="message-body">
+              <p>Is your favorite league missing? Let us know and we'll tell you when it's planned to be added into our API.</p>
+            </div>
+          </article>
+
+          
+          <h3 class="subtitle is-size-5">What attributes will be returned</h3>
+
+          <div class="table-container">
+            <table>
+              <!-- <table class="table is-fullwidth is-striped is-narrow is-bordered"></table> -->
+              <thead>
+                <tr>
+                    <th>Country</th>                  
+                    <th>ID</th>                  
+                    <th>League </th>
+                </tr>
+              </thead>  
+              <tbody>
+                <% for(let l=0; l < leagues.length; l++) { %>
+                <tr>
+                  <td>
+                      <img src="/img/flag/<%= leagues[l].flag %>" width="16"/>
+                      <%= leagues[l].country %> 
+                  </td>
+                  <td>
+                    <ul>
+                      <% for(let c=0; c < leagues[l].list.length; c++) { %>
+                      <li><span class="code"><%= leagues[l].list[c].id %></span></li>
+                      <% } %>  
+                    </ul>              
+                  </td>                    
+                  <td>
+                    <ul>
+                      <% for(let c=0; c < leagues[l].list.length; c++) { %>
+                      <li>
+                        <img src="/img/league/<%= leagues[l].list[c].logo %>" width="16"/>
+                        <%= leagues[l].list[c].title %>
+                      </li>
+                      <% } %>  
+                    </ul>
+                  </td>
+                </tr>
+                <% } %>  
+              </tbody>              
+            </table>
+          </div>
+          
+          <%- include('../../partials/navigation'); -%>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+<%- include('../../partials/footer'); -%>

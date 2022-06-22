@@ -55,9 +55,8 @@ app.use('/api/v1/results',results)
 app.use('/api/v1/standings',standings)
 app.use('/api/v1/referees',referees)
  
-app.use('/api/v1/doc',doc)
-app.get('/', (req, res) => res.render('home'));
-app.use('/admin', users);
+app.use('/api/v1/doc', doc)
+app.get('/', (req, res) => res.redirect('/api/v1/doc/getting_started'));
  
  
 app.use(auth)

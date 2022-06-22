@@ -10,13 +10,14 @@ Content-Type: application/json
 POST http://localhost:4001/signup
 Content-Type: application/json
 
-{ "name" : "test",  "email" : "tkkry@gmail.com",  "password" : "q1w2e3" }
+{ "name" : "admin2",  "email" : "admin2@gmail.com",  "password" : "qwerty" }
 
 
 ###
-GET http://localhost:4001/api/v1/todayMatches/europe/ClDjv3V5
+GET http://localhost:4001/api/v1/standings/demo
 Content-Type: application/json
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGNmNmU0NzM5NDMyMTczMDdlYTc2OSIsImlhdCI6MTY0NTEwNzY3NCwiZXhwIjoxNjQ3Njk5Njc0fQ.WQ6I_6LBly8IrFT5NuAGU0Bln0jRJQpr-Fw0vLiFk9Q
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGNmNmU0NzM5NDMyMTczMDdlYTc2OSIsImlhdCI6MTY1NTc0NDI0OSwiZXhwIjoxNjU4MzM2MjQ5fQ.NsaVT0jCayKWDEOrmM0vD-gtwFXdnPQni-ogYAumqAU
+
 
 ###
-GET http://localhost:4001/api/v1/todayMatches/demo
+GET http://localhost:4001/api/v1/standings/england/dYlOSQOD/demo

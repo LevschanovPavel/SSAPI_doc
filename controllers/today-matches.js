@@ -5,74 +5,57 @@ const ErrorResponse = require("../utils/error-respons");
 
 const hideFields = {_id:0, __v:0}
 const demoId = require("../constants/demo-id");
-const {demoTodayMatches} = require("../utils/demo-dtos");
+const { demoFixturesOrTodayMatches } = require("../utils/demo-dtos");
 
 // @desc      Get all todayMatches
 // @route     GET /api/v1/todayMatches
 // @access    Private
 exports.getTodayMatches = asyncHandler(async (req, res, next) => {
-  let todayMatches;
-  const demo = res.locals.demo;
-
-  if (demo) {
-    let demoData = await TodayMatches.find({}, {...hideFields, matches: {$slice:[0, 5]}}).limit(5)
-    todayMatches = demoTodayMatches(demoData)
-  } else {
-    todayMatches = await TodayMatches.find({}, { ...hideFields, matches: { ...hideFields}})
-  }
-
+  
+  const todayMatches = await TodayMatches.find({}, { ...hideFields, matches: { ...hideFields}})
+  
   if (!todayMatches.length) {
     return next(
-      new ErrorResponse(`TodayMatches not found`, 404)
-    );
+      new ErrorResponse(`TodayMatches not found`, 404));
   }
   
   res.status(200).json({ success: true, data: todayMatches });
 });
 
 
-// @desc      Get country todayMatches
+// @desc      Get todayMatches by country
 // @route     GET /api/v1/todayMatches/:country
 // @access    Private
 exports.getCountryTodayMatches = asyncHandler(async (req, res, next) => {
-  
-  const demo = res.locals.demo;
 
   const todayMatches = await TodayMatches.find(
     { country: {'$regex': req.params.country, $options:'i'}}
-    // , { matches: 1 }
   );
 
   if (!todayMatches.length) {
     return next(
-      new ErrorResponse(`TodayMatches not found for ${req.params.country} `, 404)
-    );
+      new ErrorResponse(`TodayMatches not found for ${req.params.country} `, 404));
   }
   
   res.status(200).json({ success: true, data: todayMatches });
 });
 
-// @desc      Get league todayMatches
+// @desc      Get todayMatches by league ID
 // @route     GET /api/v1/todayMatches/:country/:leagueId
 // @access    Public
 exports.getLeagueTodayMatches = asyncHandler(async (req, res, next) => {
   
   const todayMatches = await TodayMatches.find(
     { id: {'$regex': req.params.leagueId, $options:'i'}}
-    // , { matches: 1 }
   );
 
   if (!todayMatches.length) {
     return next(
-      new ErrorResponse(`TodayMatches not found for ${req.params.leagueId} `, 404)
-    );
+      new ErrorResponse(`TodayMatches not found for ${req.params.leagueId} `, 404));
   }
   
   res.status(200).json({ success: true, data: todayMatches });
 });
-
-
-
 
 
 // @desc      DEMO all todayMatches
@@ -80,42 +63,52 @@ exports.getLeagueTodayMatches = asyncHandler(async (req, res, next) => {
 // @access    Public
 exports.demoTodayMatches = asyncHandler(async (req, res, next) => {
   
-  let demoData = await TodayMatches.find(
+  const demoData = await TodayMatches.find(
     {}, {...hideFields, matches: {$slice:[0, 5]}}
   ).limit(5)
 
-  let result = demoTodayMatches(demoData)
-
-  if (!result.length) {
+  if (!demoData.length) {
     return next(
       new ErrorResponse(`TodayMatches not found`, 404)
     );
   }
   
-  res.status(200).json({ success: true, data: result });
+  res.status(200).json({ success: true, data: demoFixturesOrTodayMatches(demoData) });
 });
 
 
-
-// @desc      Get all todayMatches
-// @route     GET /api/v1/todayMatches
-// @req.query show = [live, ...]
+// @desc      DEMO todayMatches by country
+// @route     GET /api/v1/todayMatches/:country/demo
 // @access    Public
-// exports.getTodayMatches = asyncHandler(async (req, res, next) => {
-//   let result;
-//   const { show } = req.query ;
-//   const demo = res.locals.demo;
-
-  // if (show === "live") {
-  //   result = await LiveMatches.find();
-  // } else {
-  //   demo? result = demoTodayMatches(await TodayMatches
-  //                     .find({}, { ...hideFilds, matches: {$slice:[0, 5]}}).limit(5))
-  //        : result = await TodayMatches.find({}, { ...hideFilds, matches: { ...hideFilds}}); 
-  // }
-
- 
+exports.demoCountryTodayMatches = asyncHandler(async (req, res, next) => {
   
-//   res.status(200).json({ success: true, data: result });
-// });
+  const demoData = await TodayMatches.find(
+    { country: {'$regex': req.params.country, $options:'i'}}, {...hideFields, matches: {$slice:[0, 5]}}
+  ).limit(5)
+
+  if (!demoData.length) {
+    return next(
+      new ErrorResponse(`TodayMatches not found`, 404));
+  }
+  
+  res.status(200).json({ success: true, data: demoFixturesOrTodayMatches(demoData) });
+});
+
+
+// @desc      DEMO todayMatches by league ID
+// @route     GET /api/v1/todayMatches/:country/:leagueId/demo
+// @access    Public
+exports.demoLeagueTodayMatches = asyncHandler(async (req, res, next) => {
+  
+  const demoData = await TodayMatches.find(
+    { id: {'$regex': req.params.leagueId, $options:'i'}}, {...hideFields, matches: {$slice:[0, 5]}}
+  ).limit(5)
+
+  if (!demoData.length) {
+    return next(
+      new ErrorResponse(`TodayMatches not found`, 404));
+  }
+  
+  res.status(200).json({ success: true, data: demoFixturesOrTodayMatches(demoData) });
+});
 

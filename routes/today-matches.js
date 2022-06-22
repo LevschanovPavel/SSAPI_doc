@@ -7,7 +7,7 @@ const {
 } = require("../controllers/today-matches");
 
 const router = express.Router();
-
+ 
 router
   .route("/")
   .get(protect, authorize('admin','user'), getTodayMatches)
@@ -22,13 +22,7 @@ router
 
 // Demo
 router.get('/demo', demoTodayMatches)
-
-// router
-//   .route("/demo:country")
-//   .get(demoCountryTodayMatches) 
-
-// router
-//   .route("/demo/:country/:leagueId")
-//   .get(demoLeagueTodayMatches)
+router.get('/:country/demo', demoCountryTodayMatches)
+router.get('/:country/:leagueId/demo', demoLeagueTodayMatches)
 
 module.exports = router;

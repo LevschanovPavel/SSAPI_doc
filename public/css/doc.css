@@ -906,7 +906,7 @@ ul.sidenav.sidenav-fixed li.active ul li a{
   background: rgba(0,0,0, 0.7);
   z-index:99999;
 }
-
+ 
 .request-modal_content {
   padding: 25px;
   background: white;
@@ -924,6 +924,9 @@ ul.sidenav.sidenav-fixed li.active ul li a{
 .request-modal_header h6{
   font-weight: 600;
   text-transform: uppercase;
+}
+.request-modal_content pre{
+  min-height: 65vh;
 }
 .request-modal_footer{
   font-size: 1rem;

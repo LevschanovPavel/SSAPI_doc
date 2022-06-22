@@ -9,7 +9,7 @@ const hideFields = {_id:0, __v:0}
 const demoId = require("../constants/demo-id");
 const {
   demoLeaguesSummary, 
-  demoLatestScores
+  demoResultsOrLatestScores
 } = require("../utils/demo-dtos");
 
 // @desc      Get all Results
@@ -80,7 +80,7 @@ exports.demoAllResults = asyncHandler(async (req, res, next) => {
     { ...hideFields, matches: {$slice:[0, 5]}}
   )
     
-  let result = demoLatestScores(demoData)
+  let result = demoResultsOrLatestScores(demoData)
 
   res.status(200).json({ success: true, data: result });
 });
@@ -96,7 +96,7 @@ exports.demoLatestScores = asyncHandler(async (req, res, next) => {
     { ...hideFields, matches: {$slice:[0, 5]}}
   )
 
-  let result = demoLatestScores(demoData)
+  let result = demoResultsOrLatestScores(demoData)
 
   res.status(200).json({ success: true, data: result });
 });

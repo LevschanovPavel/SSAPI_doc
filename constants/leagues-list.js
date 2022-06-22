@@ -20,6 +20,18 @@ module.exports = Object.freeze([
         logo: "6a9KSp97-IRpaW1Pn.png",
         plan: "Free",
       },
+      {
+        id: "rJSMG3H0",
+        league: "League One",
+        logo: "j9pdDSV1-x68Bg5KH.png",
+        plan: "Free",
+      },
+      {
+        id: "0MwU4NW6",
+        league: "League Two",
+        logo: "OWHCHi8j-Gd7FhPZN.png",
+        plan: "Free",
+      },
     ],
   },
   {

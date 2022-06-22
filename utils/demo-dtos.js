@@ -1,10 +1,10 @@
 
-exports.demoTodayMatches = (result)=>{
+exports.demoFixturesOrTodayMatches = (result)=>{
   return result.map(league=>{
     return {
       id: league.id,
       num: league.num,
-      country: league.country,
+      country: league.country.toUpperCase(),
       league: league.league,
       logo: league.logo,
       matches: league.matches.map(match=>{
@@ -38,8 +38,8 @@ exports.demoLeaguesSummary = (data)=>{
     }
   })
 }
-
-exports.demoLatestScores = (data)=>{
+ 
+exports.demoResultsOrLatestScores = (data)=>{
   return data.map(league=>{
     return {
       id: league.id,
@@ -72,6 +72,36 @@ exports.demoLatestScores = (data)=>{
             scoreSecondHalf: match.summary.scoreSecondHalf
           },
           stats: 'hide in demo version'
+        }
+      })
+    }
+  })
+}
+
+
+exports.demoStandings = (data)=>{
+  return data.map(league=>{
+    return {
+      id: league.id,
+      country: league.country,
+      league: league.league,
+      standings: league.standings.overall.map(team=>{
+        return {
+          rank: team.rank,
+          teamName: team.teamName,
+          teamId: team.teamId,
+          teamLogo: team.teamLogo,
+          matchesPlayed: team.matchesPlayed,
+          wins: team.wins,
+          draws: team.draws,
+          losses: team.losses,
+          goals: team.goals,
+          points: team.points,
+          nextMatch: {
+            matchId: team.nextMatch.matchId,
+            matchDate: team.nextMatch.matchDate,
+            title: team.nextMatch.title,
+          }
         }
       })
     }

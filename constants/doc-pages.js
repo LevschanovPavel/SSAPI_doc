@@ -163,6 +163,7 @@ module.exports = Object.freeze({
     category: "today_matches",
     title: "Today matches by country",
     get: "/api/v1/todayMatches/:country",
+    demo: "/api/v1/todayMatches/europe/demo",
     previous: {
       link: "all_today_matches",
       title: "All today matches"
@@ -177,6 +178,7 @@ module.exports = Object.freeze({
     category: "today_matches",
     title: "Today matches by league",
     get: "/api/v1/todayMatches/:country/:leagueId",
+    demo: "/api/v1/todayMatches/europe/GfRbsVWM/demo",
     previous: {
       link: "today_matches_by_country",
       title: "Today matches by country"
@@ -192,6 +194,7 @@ module.exports = Object.freeze({
     category: "fixtures",
     title: "All fixtures",
     get: "/api/v1/fixtures", 
+    demo: "/api/v1/fixtures/demo",
     previous: {
       link: "today_matches_by_league",
       title: "Today matches by league",
@@ -206,6 +209,7 @@ module.exports = Object.freeze({
     category: "fixtures",
     title: "Fixtures by country",
     get: "/api/v1/fixtures/:country",
+    demo: "/api/v1/fixtures/france/demo",
     previous: {
       link: "all_fixtures",
       title: "All fixtures"
@@ -220,6 +224,7 @@ module.exports = Object.freeze({
     category: "fixtures",
     title: "Fixtures by league",
     get: "/api/v1/fixtures/:country/:leagueId",
+    demo: "/api/v1/fixtures/italy/COuk57Ci/demo",
     previous: {
       link: "fixtures_by_country",
       title: "Fixtures by country",
@@ -395,6 +400,7 @@ module.exports = Object.freeze({
     category: "standings",
     title: "All standings",
     get: "/api/v1/standings",
+    demo: "/api/v1/standings/demo",
     previous: {
       link: "average_referees_stats",
       title: "Average referees stats"
@@ -409,6 +415,7 @@ module.exports = Object.freeze({
     category:"standings",
     title: "Standings by country",
     get: "/api/v1/standings/:country",
+    demo: "/api/v1/standings/spain/demo",
     previous: {
       link: "all_standings",
       title: "All standings"
@@ -423,6 +430,7 @@ module.exports = Object.freeze({
     category:"standings",
     title: "Standings by league",
     get: "/api/v1/standings/:country/:leagueId",
+    demo: "/api/v1/standings/england/dYlOSQOD/demo",
     previous: {
       link: "standings_by_country",
       title: "Standings by country"

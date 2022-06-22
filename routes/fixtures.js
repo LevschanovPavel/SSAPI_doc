@@ -1,10 +1,9 @@
 const express = require("express");
-const { protect, authorize } = require("../middleware/auth");
+const { protect, authorize, demo } = require("../middleware/auth");
 
 const {
-  getFixtures,
-  getCountryFixtures,
-  getLeagueFixtures
+  getFixtures, getCountryFixtures, getLeagueFixtures,
+  demoFixtures, demoCountryFixtures, demoLeagueFixtures
 } = require("../controllers/fixtures");
 
 const router = express.Router();
@@ -15,10 +14,15 @@ router
 
 router
   .route("/:country")
-  .get(protect, authorize('admin','user'), getCountryFixtures)  
+  .get(demo, protect, authorize('admin','user'), getCountryFixtures)  
 
 router
   .route("/:country/:leagueId")
-  .get(protect, authorize('admin','user'), getLeagueFixtures)  
+  .get(demo, protect, authorize('admin','user'), getLeagueFixtures)  
+
+// Demo
+router.get('/demo', demoFixtures)
+router.get('/:country/demo', demoCountryFixtures)
+router.get('/:country/:leagueId/demo', demoLeagueFixtures)
 
 module.exports = router;  

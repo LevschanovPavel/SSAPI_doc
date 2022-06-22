@@ -21,7 +21,7 @@ const getting_started = (req, res) => {
     menu: docPages.menu,
     data: docPages.getting_started
   }
-  res.render('doc/general/getting_started', {pageData});
+  res.render('doc/pages/general/getting_started', {pageData});
 }
 
 // @desc      Doc Api Model Page
@@ -32,7 +32,7 @@ const api_model = (req, res) => {
     menu: docPages.menu,
     data: docPages.api_model
   }
-  res.render('doc/api_model', {pageData});
+  res.render('doc/pages/general/api_model', {pageData});
 }
 
 // @desc      Doc Coverage Page
@@ -47,7 +47,7 @@ const coverage = asyncHandler(async (req, res, next) => {
     data: docPages.coverage
   }
 
-  res.render('doc/coverage', { pageData, leagues });
+  res.render('doc/pages/general/coverage', { pageData, leagues });
 })
 
 // @desc      Doc All today matches Page
@@ -58,7 +58,7 @@ const all_today_matches = (req, res) => {
     menu: docPages.menu,
     data: docPages.all_today_matches
   }
-  res.render('doc/today_matches/all_today_matches', {pageData});
+  res.render('doc/pages/today_matches/all_today_matches', {pageData});
 }
 
 // @desc      Doc Today matches by country Page
@@ -69,7 +69,7 @@ const today_matches_by_country = (req, res) => {
     menu: docPages.menu,
     data: docPages.today_matches_by_country
   }
-  res.render('doc/today_matches/today_matches_by_country', {pageData});
+  res.render('doc/pages/today_matches/today_matches_by_country', {pageData});
 }
 
 // @desc      Doc Today matches by league Page
@@ -80,7 +80,7 @@ const today_matches_by_league = (req, res) => {
     menu: docPages.menu,
     data: docPages.today_matches_by_league
   }
-  res.render('doc/today_matches/today_matches_by_league', {pageData});
+  res.render('doc/pages/today_matches/today_matches_by_league', {pageData});
 }
 
 // @desc      Doc All fixtures Page
@@ -91,7 +91,7 @@ const all_fixtures = (req, res) => {
     menu: docPages.menu,
     data: docPages.all_fixtures
   }
-  res.render('doc/fixtures/all_fixtures', {pageData});
+  res.render('doc/pages/fixtures/all_fixtures', {pageData});
 }
 
 // @desc      Doc Fixtures by country Page
@@ -102,7 +102,7 @@ const fixtures_by_country = (req, res) => {
     menu: docPages.menu,
     data: docPages.fixtures_by_country
   }
-  res.render('doc/fixtures/fixtures_by_country', {pageData});
+  res.render('doc/pages/fixtures/fixtures_by_country', {pageData});
 }
 
 // @desc      Doc Fixtures by league Page
@@ -113,7 +113,7 @@ const fixtures_by_league = (req, res) => {
     menu: docPages.menu,
     data: docPages.fixtures_by_league
   }
-  res.render('doc/fixtures/fixtures_by_league', {pageData});
+  res.render('doc/pages/fixtures/fixtures_by_league', {pageData});
 }
 
 // @desc      Doc All results Page
@@ -124,7 +124,7 @@ const all_results = (req, res) => {
     menu: docPages.menu,
     data: docPages.all_results
   }
-  res.render('doc/results/all_results', {pageData});
+  res.render('doc/pages/results/all_results', {pageData});
 }
 
 // @desc      Doc Latest scores Page
@@ -135,7 +135,7 @@ const latest_scores = (req, res) => {
     menu: docPages.menu,
     data: docPages.latest_scores
   }
-  res.render('doc/results/latest_scores', {pageData});
+  res.render('doc/pages/results/latest_scores', {pageData});
 }
 
 // @desc      Doc Leagues summary Page
@@ -146,7 +146,7 @@ const leagues_summary = (req, res) => {
     menu: docPages.menu,
     data: docPages.leagues_summary
   }
-  res.render('doc/results/leagues_summary', {pageData});
+  res.render('doc/pages/results/leagues_summary', {pageData});
 }
 
 // @desc      Doc Stats by match id Page
@@ -157,7 +157,7 @@ const stats_by_match_id = (req, res) => {
     menu: docPages.menu,
     data: docPages.stats_by_match_id
   }
-  res.render('doc/match_stats/stats_by_match_id', {pageData});
+  res.render('doc/pages/match_stats/stats_by_match_id', {pageData});
 }
 
 // @desc      Doc Stats for home/away/h2h Page
@@ -168,7 +168,7 @@ const stats_for_home_away_h2h = (req, res) => {
     menu: docPages.menu,
     data: docPages.stats_for_home_away_h2h
   }
-  res.render('doc/match_stats/stats_for_home_away_h2h', {pageData});
+  res.render('doc/pages/match_stats/stats_for_home_away_h2h', {pageData});
 }
 
 // @desc      Doc Select stats Page
@@ -179,7 +179,7 @@ const select_stats = (req, res) => {
     menu: docPages.menu,
     data: docPages.select_stats
   }
-  res.render('doc/match_stats/select_stats', {pageData});
+  res.render('doc/pages/match_stats/select_stats', {pageData});
 }
 
 // @desc      Doc Odds stats Page
@@ -190,7 +190,7 @@ const odds_stats = (req, res) => {
     menu: docPages.menu,
     data: docPages.odds_stats
   }
-  res.render('doc/match_stats/odds_stats', {pageData});
+  res.render('doc/pages/match_stats/odds_stats', {pageData});
 }
 
 
@@ -202,7 +202,7 @@ const all_referees = (req, res) => {
     menu: docPages.menu,
     data: docPages.all_referees
   }
-  res.render('doc/referees/all_referees', {pageData});
+  res.render('doc/pages/referees/all_referees', {pageData});
 }
 
 // @desc      Doc Referees stats by league
@@ -213,7 +213,7 @@ const referees_by_league = (req, res) => {
     menu: docPages.menu,
     data: docPages.referees_by_league
   }
-  res.render('doc/referees/referees_by_league', {pageData});
+  res.render('doc/pages/referees/referees_by_league', {pageData});
 }
 
 // @desc      Doc Referee stats by name
@@ -224,7 +224,7 @@ const referee_stats_by_name = (req, res) => {
     menu: docPages.menu,
     data: docPages.referee_stats_by_name
   }
-  res.render('doc/referees/referee_stats_by_name', {pageData});
+  res.render('doc/pages/referees/referee_stats_by_name', {pageData});
 }
 
 // @desc      Doc Average referees stats
@@ -235,7 +235,7 @@ const average_referees_stats = (req, res) => {
     menu: docPages.menu,
     data: docPages.average_referees_stats
   }
-  res.render('doc/referees/average_referees_stats', {pageData});
+  res.render('doc/pages/referees/average_referees_stats', {pageData});
 }
 
 // @desc      Doc Standing Page
@@ -246,7 +246,7 @@ const all_standings = (req, res) => {
     menu: docPages.menu,
     data: docPages.all_standings
   }
-  res.render('doc/standings/all_standings', {pageData});
+  res.render('doc/pages/standings/all_standings', {pageData});
 }
 
 // @desc      Doc Standing Page by Country
@@ -257,7 +257,7 @@ const standings_by_country = (req, res) => {
     menu: docPages.menu,
     data: docPages.standings_by_country
   }
-  res.render('doc/standings/standings_by_country', {pageData});
+  res.render('doc/pages/standings/standings_by_country', {pageData});
 }
 
 // @desc      Doc Standing Page by League
@@ -268,7 +268,7 @@ const standings_by_league = (req, res) => {
     menu: docPages.menu,
     data: docPages.standings_by_league
   }
-  res.render('doc/standings/standings_by_league', {pageData});
+  res.render('doc/pages/standings/standings_by_league', {pageData});
 }
 
 // @desc       Doc Sample Today matches Page 
@@ -280,7 +280,7 @@ const today_matches = asyncHandler(async (req, res) => {
     menu: docPages.menu,
     data: docPages.today_matches
   }
-  res.render('doc/sample/today_matches', {pageData, todayMatches});
+  res.render('doc/pages/sample/today_matches', {pageData, todayMatches});
 })
 
 // @desc      Doc Sample Fixtures Page
@@ -292,7 +292,7 @@ const fixtures = asyncHandler(async (req, res) => {
     menu: docPages.menu,
     data: docPages.fixtures
   }
-  res.render('doc/sample/fixtures', {pageData, fixtures});
+  res.render('doc/pages/sample/fixtures', {pageData, fixtures});
 })
 
 // @desc      Doc Sample MatchStats by ID Page Get matchStats by ID
@@ -338,7 +338,7 @@ const matchStats = asyncHandler(async (req, res, next) => {
 
   console.log("result[0].matchInfo",result[0].matchInfo)
   
-  res.render('doc/sample/matchStats', {
+  res.render('doc/pages/sample/matchStats', {
     pageData, 
     flag_url,
     stats,
