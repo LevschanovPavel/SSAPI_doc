@@ -526,6 +526,12 @@ nav ul li a:hover, nav ul li.active {
 }
 
 @media only screen and (max-width: 992px) {
+  .doc-brand-logo img{
+    margin-top: 5px;
+    width: 250px;
+    height: 68px;
+  }
+  
   nav.top-nav {
     position: fixed;
   }
@@ -543,6 +549,12 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 }
 
 @media only screen and (max-width: 451px){
+  .doc-brand-logo img{
+    margin-top: 12px;
+    margin-left: 40px;
+    width: 200px;
+    height: 54px;
+  }
   .table.is-narrow td, .table.is-narrow th {
     padding: 0.3em;
   }

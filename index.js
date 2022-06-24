@@ -57,8 +57,7 @@ app.use('/api/v1/referees',referees)
  
 app.use('/api/v1/doc', doc)
 app.get('/', (req, res) => res.redirect('/api/v1/doc/all_today_matches'));
- 
- 
+
 app.use(auth)
 app.use(errorHandler)
 
