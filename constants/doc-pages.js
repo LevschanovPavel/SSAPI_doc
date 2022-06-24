@@ -1,17 +1,17 @@
 module.exports = Object.freeze({
   menu: [
-    {
-      num: 0,
-      id: "general",
-      icon: "launch",
-      level: 2,
-      title: "General",
-      submenu: [
-        {title: "Getting started", link: "getting_started"},
-        {title: "Api model", link: "api_model"},
-        {title: "Coverage", link: "coverage"},
-      ]
-    },    
+    // {
+    //   num: 0,
+    //   id: "general",
+    //   icon: "launch",
+    //   level: 2,
+    //   title: "General",
+    //   submenu: [
+    //     {title: "Getting started", link: "getting_started"},
+    //     {title: "Api model", link: "api_model"},
+    //     {title: "Coverage", link: "coverage"},
+    //   ]
+    // },    
     // { 
     //   num: 1,
     //   id: "api_model",
@@ -101,47 +101,47 @@ module.exports = Object.freeze({
       ]
     },
   ],
-  //***General***//
-  getting_started:  {
-    link: "getting_started",
-    category: "general",
-    title: "Getting started",
-    get: "/api/v1/getting_started",
-    next: {
-      link: "api_model",
-      title: "Api model"
-    }, 
-  },
-  //***Api model***//
-  api_model:  {
-    link: "api_model",
-    category: "general",
-    title: "Api model",
-    get: "/api/v1/api_model",
-    previous: {
-      link: "getting_started",
-      title: "Getting started"
-    },    
-    next: {
-      link: "coverage",
-      title: "Coverage"
-    }, 
-  },
-  //***Coverage***//
-  coverage:  {
-    link: "coverage",
-    category: "general",
-    title: "Coverage",
-    get: "/api/v1/coverage",
-    previous: {
-      link: "api_model",
-      title: "Api model"
-    },    
-    next: {
-      link: "all_today_matches",
-      title: "All today matches"
-    }, 
-  },
+  // //***General***//
+  // getting_started:  {
+  //   link: "getting_started",
+  //   category: "general",
+  //   title: "Getting started",
+  //   get: "/api/v1/getting_started",
+  //   next: {
+  //     link: "api_model",
+  //     title: "Api model"
+  //   }, 
+  // },
+  // //***Api model***//
+  // api_model:  {
+  //   link: "api_model",
+  //   category: "general",
+  //   title: "Api model",
+  //   get: "/api/v1/api_model",
+  //   previous: {
+  //     link: "getting_started",
+  //     title: "Getting started"
+  //   },    
+  //   next: {
+  //     link: "coverage",
+  //     title: "Coverage"
+  //   }, 
+  // },
+  // //***Coverage***//
+  // coverage:  {
+  //   link: "coverage",
+  //   category: "general",
+  //   title: "Coverage",
+  //   get: "/api/v1/coverage",
+  //   previous: {
+  //     link: "api_model",
+  //     title: "Api model"
+  //   },    
+  //   next: {
+  //     link: "all_today_matches",
+  //     title: "All today matches"
+  //   }, 
+  // },
   //***Today matches***//
   all_today_matches:  {
     link: "all_today_matches",
