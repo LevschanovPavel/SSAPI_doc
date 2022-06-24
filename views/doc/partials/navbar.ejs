@@ -1,0 +1,33 @@
+  <nav class="top-nav">
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="row">
+          <div class="col s12 m10 offset-m1">
+
+            <a href="/" class="doc-brand-logo"><img src="/img/api_logo_demo.png" height="79px;" alt=""></a>
+
+            <ul class="right hide-on-small-only">
+              <% if (user) { %>
+                <li class="flow-text teal-text text-darken-4">
+                  <% if (user.name==="admin") { %>
+                    <a href="/admin" class="nav-user"><i class="material-icons">person</i><%= user.name %></a>
+                  <% } else { %>
+                    <a href="/me" class="nav-user"><i class="material-icons">person</i><%= user.name %></a>
+                  <% } %>
+                </li>
+                <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
+              <% } else { %>
+                <li><a href="/login">Log in</a></li>
+                <li><a href="/signup">Sign up</a></li>
+              <% } %>
+            </ul>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

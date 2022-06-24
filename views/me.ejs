@@ -1,0 +1,193 @@
+<%- include('partials/header'); -%>
+
+
+
+
+<div class="container" id="startPosts">
+  <br>
+  <br>
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s2"><a href="#profile-tab">Your profile</a></li>
+        <li class="tab col s2"><a href="#matches-tab">Today Matches</a></li>
+        <li class="tab col s2"><a href="#nationals-tab">National Matches</a></li>
+        <li class="tab col s2"><a href="#fixtures-tab">Fixtures</a></li>
+        <li class="tab col s2"><a href="#leagues-tab">Leagues</a></li>
+      </ul>
+    </div>
+    <div id="matches-tab" class="col s12">
+      <!-- MATCHES -->
+      <h4 class="center">Today Matches</h4>
+
+      <% for(let t=0; t < todayMatches.length; t++) { %>
+      <div class="event_header">
+        <div class="icon--flag event__title fl_<%= todayMatches[t].num %>">
+          <div class="event__titleBox">
+            <span class="event__title--type"><%= todayMatches[t].country %> </span>
+            <span class="event__title--name"><%= todayMatches[t].league %> </span>
+          </div>
+        </div>
+        
+      </div>
+      <% for(let tm=0; tm < todayMatches[t].matches.length; tm++) { %>
+      <div class="event">
+        <div class="time"><%= todayMatches[t].matches[tm].matchTime %></div>
+        <div class="home_team">
+          <img class="logo" src="https://www.flashscore.com/res/image/data/<%= todayMatches[t].matches[tm].homeTeamIco %>">
+          <span><%= todayMatches[t].matches[tm].homeTeam %></span>
+        </div>
+        <div class="split"> - </div>
+        <div class="away_team">
+          <span><%= todayMatches[t].matches[tm].awayTeam %></span>
+          <img class="logo" src="https://www.flashscore.com/res/image/data/<%= todayMatches[t].matches[tm].awayTeamIco %>">
+          
+        </div>
+      </div>
+      <% } %>  
+      <% } %>  
+    </div>
+    <div id="fixtures-tab" class="col s12">
+      <!-- FIXTURES -->
+      <h4 class="center">Fixtures</h4>
+      <% for(let t=0; t < fixtures.length; t++) { %>
+        <div class="event_header">
+          <div class="icon--flag event__title fl_<%= fixtures[t].num %>">
+            <div class="event__titleBox">
+              <span class="event__title--type"><%= fixtures[t].country %> </span>
+              <span class="event__title--name"><%= fixtures[t].league %> </span>
+            </div>
+          </div>
+          
+        </div>
+        <% for(let tm=0; tm < fixtures[t].matches.length; tm++) { %>
+        <div class="event">
+          <div class="time">
+            <%= fixtures[t].matches[tm].matchData %> 
+            <%= fixtures[t].matches[tm].matchTime %>
+          </div>
+          <div class="home_team">
+            <img class="logo" src="https://www.flashscore.com/res/image/data/<%= fixtures[t].matches[tm].homeTeamIco %>">
+            <span><%= fixtures[t].matches[tm].homeTeam %></span>
+          </div>
+          <div class="split"> - </div>
+          <div class="away_team">
+            <span><%= fixtures[t].matches[tm].awayTeam %></span>
+            <img class="logo" src="https://www.flashscore.com/res/image/data/<%= fixtures[t].matches[tm].awayTeamIco %>">
+            
+          </div>
+        </div>
+        <% } %>  
+        <% } %>  
+    </div>   
+    
+    <div id="nationals-tab" class="col s12">
+      <!-- National Matches -->
+      <h4 class="center">National Matches</h4>
+      <% for(let t=0; t < nationalMatches.length; t++) { %>
+        <div class="event_header">
+          <div class="icon--flag event__title fl_<%= nationalMatches[t].num %>">
+            <div class="event__titleBox">
+              <span class="event__title--type"><%= nationalMatches[t].country %> </span>
+              <span class="event__title--name"><%= nationalMatches[t].league %> </span>
+            </div>
+          </div>
+          
+        </div>
+        <% for(let tm=0; tm < nationalMatches[t].matches.length; tm++) { %>
+        <div class="event">
+          <div class="time">
+            <%= nationalMatches[t].matches[tm].matchData %> 
+            <%= nationalMatches[t].matches[tm].matchTime %>
+          </div>
+          <div class="home_team">
+            <img class="logo" src="https://www.flashscore.com/res/image/data/<%= nationalMatches[t].matches[tm].homeTeamIco %>">
+            <span><%= nationalMatches[t].matches[tm].homeTeam %></span>
+          </div>
+          <div class="split"> - </div>
+          <div class="away_team">
+            <span><%= nationalMatches[t].matches[tm].awayTeam %></span>
+            <img class="logo" src="https://www.flashscore.com/res/image/data/<%= nationalMatches[t].matches[tm].awayTeamIco %>">
+            
+          </div>
+        </div>
+        <% } %>  
+        <% } %>  
+    </div>       
+    
+
+    <div id="leagues-tab" class="col s12">
+      <!-- LEAGUES -->
+      <h4 class="center">Leagues</h4>
+      <table>
+        <thead>
+          <tr>
+              <th>Countries</th>
+              <th>Championships</th>
+              <th>Plans</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% for(let l=0; l < leagues.length; l++) { %>
+          <tr>
+            <td>
+                <img src="img/flag/<%= leagues[l].flag %>" width="16"/>
+                <%= leagues[l].country %> 
+            </td>
+            <td>
+              <ul>
+                <% for(let c=0; c < leagues[l].list.length; c++) { %>
+                <li>
+                  <img src="img/league/<%= leagues[l].list[c].logo %>" width="16"/>
+                  <%= leagues[l].list[c].league %>
+                </li>
+                <% } %>  
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <% for(let c=0; c < leagues[l].list.length; c++) { %>
+                <li><%= leagues[l].list[c].plan %></li>
+                <% } %>  
+              </ul>              
+            </td>
+          </tr>
+          <% } %>  
+        </tbody>
+      </table>
+
+    </div>
+    <div id="profile-tab" class="col s12">
+      <!-- YOUR PROFILE -->
+      <h4 class="center">Your profile</h4>
+
+      <div class="col s12 m12">
+        <i class="material-icons prefix">person</i>
+        <%= user.name %>
+      </div>
+      
+      <div class="col s12 m12">
+        <i class="material-icons prefix">email</i>
+        <%= user.email %>
+      </div>
+
+      <div class="col s12 m12">
+        <i class="material-icons prefix">plan</i>
+        <%= user.plan %>
+      </div>      
+      <div class="col s12 m12">
+        <i class="material-icons prefix">apiKey</i>
+        <%= user.apiKey %>
+      </div>     
+      
+      
+
+     
+    </div>
+
+  </div>
+  
+</div>
+
+<%- include('partials/footer'); -%>
